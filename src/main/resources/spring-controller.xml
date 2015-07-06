@@ -11,7 +11,7 @@
 	<mvc:view-controller path="/main" view-name="main"/>
 	
 	<bean class="controller.RegisterController">
-		<property name="memberRegisterService" ref="memberRegSvc" />
+		<property name="userRegisterService" ref="userRegSvc" />
 	</bean>
 
 	<bean class="survey.SurveyController">

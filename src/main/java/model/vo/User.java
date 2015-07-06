@@ -1,10 +1,10 @@
-package vo;
+package model.vo;
 
 import java.util.Date;
 
-import exception.IdPasswordNotMatchingException;
+import model.exception.IdPasswordNotMatchingException;
 
-public class Member {
+public class User {
 
 	private Long user_no;
 	private String email;
@@ -18,7 +18,7 @@ public class Member {
 	private String account_name;
 	private int status;
 
-	public Member(String email, String password, String name, String phone, Date create_time, Date update_time,
+	public User(String email, String password, String name, String phone, Date create_time, Date update_time,
 			String account_num, String account_name) {
 		this.email = email;
 		this.password = password;

@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import exception.AlreadyExistingMemberException;
-import service.MemberRegisterService;
-import spring.RegisterRequest;
+import model.exception.AlreadyExistingUserException;
+import model.service.UserRegisterService;
+import model.spring.RegisterRequest;
 
 @Controller
 public class RegisterController {
-	private MemberRegisterService memberRegisterService;
+	private UserRegisterService userRegisterService;
 
-	public void setMemberRegisterService(
-			MemberRegisterService memberRegisterService) {
-		this.memberRegisterService = memberRegisterService;
+	public void setUserRegisterService(
+			UserRegisterService userRegisterService) {
+		this.userRegisterService = userRegisterService;
 	}
 
 	@RequestMapping("/register/step1")
@@ -43,9 +43,9 @@ public class RegisterController {
 	@RequestMapping(value = "/register/step3", method = RequestMethod.POST)
 	public String handleStep3(RegisterRequest regReq) {
 		try {
-			memberRegisterService.regist(regReq);
+			userRegisterService.regist(regReq);
 			return "register/step3";
-		} catch (AlreadyExistingMemberException ex) {
+		} catch (AlreadyExistingUserException ex) {
 			return "register/step2";
 		}
 	}

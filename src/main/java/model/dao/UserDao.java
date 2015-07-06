@@ -1,4 +1,4 @@
-package dao;
+package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,24 +15,24 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
-import vo.Member;
+import model.vo.User;
 
-public class MemberDao {
+public class UserDao {
 
 	private JdbcTemplate jdbcTemplate;
 
-	public MemberDao(DataSource dataSource) {
+	public UserDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	public Member selectByEmail(String email) {
-		List<Member> results = jdbcTemplate.query(
+	public User selectByEmail(String email) {
+		List<User> results = jdbcTemplate.query(
 				"select * from user where email = ?",
-				new RowMapper<Member>() {
+				new RowMapper<User>() {
 					@Override
-					public Member mapRow(ResultSet rs, int rowNum)
+					public User mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
-						Member member = new Member(rs.getString("email"),
+						User user = new User(rs.getString("email"),
 								rs.getString("pw"),
 								rs.getString("name"),
 								rs.getString("phone"),
@@ -40,10 +40,10 @@ public class MemberDao {
 								rs.getTimestamp("update_time"),
 								rs.getString("account_num"),
 								rs.getString("account_name"));
-						member.setUserNo(rs.getLong("user_no"));
-						member.setLevel(1);
-						member.setStatus(1);
-						return member;
+						user.setUserNo(rs.getLong("user_no"));
+						user.setLevel(1);
+						user.setStatus(1);
+						return user;
 					}
 				},
 				email);
@@ -51,7 +51,7 @@ public class MemberDao {
 		return results.isEmpty() ? null : results.get(0);
 	}
 
-	public void insert(final Member member) {
+	public void insert(final User user) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -61,37 +61,37 @@ public class MemberDao {
 						"insert into user (email, pw, name, phone, level, create_time, update_time, account_num, account_name, status) "+
 						"values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 						new String[] {"user_no"});
-				pstmt.setString(1,  member.getEmail());
-				pstmt.setString(2,  member.getPassword());
-				pstmt.setString(3,  member.getName());
-				pstmt.setString(4,  member.getPhone());
+				pstmt.setString(1,  user.getEmail());
+				pstmt.setString(2,  user.getPassword());
+				pstmt.setString(3,  user.getName());
+				pstmt.setString(4,  user.getPhone());
 				pstmt.setInt(5, 1);
-				pstmt.setTimestamp(6,  new Timestamp(member.getCreateTime().getTime()));
-				pstmt.setTimestamp(7,  new Timestamp(member.getUpdateTime().getTime()));
-				pstmt.setString(8,  member.getAccountNum());
-				pstmt.setString(9,  member.getAccountName());
+				pstmt.setTimestamp(6,  new Timestamp(user.getCreateTime().getTime()));
+				pstmt.setTimestamp(7,  new Timestamp(user.getUpdateTime().getTime()));
+				pstmt.setString(8,  user.getAccountNum());
+				pstmt.setString(9,  user.getAccountName());
 				pstmt.setInt(10, 1);
 				return pstmt;
 			}
 		}, keyHolder);
 		Number keyValue = keyHolder.getKey();
-		member.setUserNo(keyValue.longValue());
-		member.setLevel(1);
-		member.setStatus(1);
+		user.setUserNo(keyValue.longValue());
+		user.setLevel(1);
+		user.setStatus(1);
 	}
 
-	public void update(Member member) {
+	public void update(User user) {
 		jdbcTemplate.update("update user set name = ?, pw = ?, update_time = ? where email = ?",
-				member.getName(), member.getPassword(), member.getUpdateTime(), member.getEmail());
+				user.getName(), user.getPassword(), user.getUpdateTime(), user.getEmail());
 	}
 
-	public List<Member> selectAll() {
-		List<Member> results = jdbcTemplate.query("select * from USER",
-				new RowMapper<Member>() {
+	public List<User> selectAll() {
+		List<User> results = jdbcTemplate.query("select * from USER",
+				new RowMapper<User>() {
 					@Override
-					public Member mapRow(ResultSet rs, int rowNum)
+					public User mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
-						Member member = new Member(rs.getString("email"),
+						User user = new User(rs.getString("email"),
 								rs.getString("pw"),
 								rs.getString("name"),
 								rs.getString("phone"),
@@ -99,10 +99,10 @@ public class MemberDao {
 								rs.getTimestamp("update_time"),
 								rs.getString("account_num"),
 								rs.getString("account_name"));
-						member.setUserNo(rs.getLong("user_no"));
-						member.setLevel(1);
-						member.setStatus(1);
-						return member;
+						user.setUserNo(rs.getLong("user_no"));
+						user.setLevel(1);
+						user.setStatus(1);
+						return user;
 					}
 				});
 		return results;
