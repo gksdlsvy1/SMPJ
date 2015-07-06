@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h2>회원 정보 입력</h2>
-	<form action="step3" method="post">
+	<form action="customerSignUpStep3" method="post">
 	<p>
 		<label>이메일:<br>
 		<input type="text" name="email" id="email" value="${registerRequest.email}">
