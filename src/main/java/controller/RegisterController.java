@@ -13,6 +13,7 @@ import model.spring.RegisterRequest;
 @Controller
 public class RegisterController {
 	private UserRegisterService userRegisterService;
+	private boolean isException = false;
 
 	public void setUserRegisterService(
 			UserRegisterService userRegisterService) {
@@ -43,6 +44,10 @@ public class RegisterController {
 	
 	@RequestMapping(value = "/register/customerSignUpStep3", method = RequestMethod.GET)
 	public String customerHandleStep3Get() {
+		if(isException) {
+			isException = false;
+		return "register/customerSignUpStep2";
+		}
 		return "redirect:customerSignUpStep2";
 	}
 
@@ -54,6 +59,7 @@ public class RegisterController {
 		} catch (AlreadyExistingUserException ex) {
 			model.addAttribute("msg", "아이디 중복"); 
 			model.addAttribute("url", "customerSignUpStep3"); 
+			isException = true;
 			return "register/AlreadyExistingUser";
 		}
 	}

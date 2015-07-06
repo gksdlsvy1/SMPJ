@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>회원가입</title>
+	<title>판매자 회원가입</title>
 </head>
 <body>
-	<h2>회원 정보 입력</h2>
+	<h2>판매자 회원 정보 입력</h2>
 	<form action="customerSignUpStep3" method="post">
 	<p>
 		<label>이메일:<br>
