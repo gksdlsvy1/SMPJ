@@ -28,6 +28,21 @@
 		<input type="password" name="confirmPassword" id="confirmPassword">
 		</label>
 	</p>
+	<p>
+		<label>전화번호:<br>
+		<input type="text" name="phone" id="phone" >
+		</label>
+	</p>
+	<p>
+		<label>계좌번호:<br>
+		<input type="text" name="account_num" id="account_num" >
+		</label>
+	</p>
+	<p>
+		<label>계좌 사용자 이름:<br>
+		<input type="text" name="account_name" id="account_name" >
+		</label>
+	</p>
 	<input type="submit" value="가입 완료">
 	</form>
 	

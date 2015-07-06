@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>SignIn</title>
+		<link href="web/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+		<link href="web/css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<link href="web/css/theme.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<!----webfonts---->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+		<!----//webfonts---->
+		<script type="text/javascript" src="web/js/jquery.min.js"></script>
+		<script type="text/javascript" src="web/js/bootstrap.js"></script>
+		<script type="text/javascript" src="web/js/bootstrap.min.js"></script>
+		<!--  jquery plguin -->
+</head>
+<body>
+<form name=frm1 method=post action=web/js/loginReq.jsp>
+	<div class="login_conts">
+					<div class="login_inconts">
+						<div class="login_form_v2">
+							<fieldset >
+								<legend>로그인 정보 입력</legend>
+								<!--회원로그인 -->
+								<div id="memLogin" class="mem_login" style="display:;" >
+									<ul >
+										<li><label for="email">이메일</label><input name="email"  type="text" maxlength="60" ></li>
+										<li><label for="password">비밀번호</label><input name="password"  type="password" value="" maxlength="50" ></li>
+									</ul>
+									
+									<div class="save_idW">
+										<label for="saveId" class="save_id">
+											<input name="autoId" type="checkbox" value="Y" class="chk"  id="saveId"  style="vertical-bottom;padding-right:3px">
+										</label>
+										<input type=submit value="로그인" class="btn_login">
+									</div>
+									
+								</div>
+							</fieldset>
+		
+							<div class="more_btn">
+								<a href="web/js/regMember.jsp" class="defbtn_sm dtype5"><span>회원가입</span></a>
+								<a href="javascript:searchID();" class="defbtn_sm dtype6"><span>아이디 찾기</span></a>
+								<a href="javascript:searchPWD();" class="defbtn_sm dtype6"><span>비밀번호 찾기</span></a>
+							</div>
+						</div>
+		
+					</div>
+				</div>
+				</form>
+
+</body>
+</html>

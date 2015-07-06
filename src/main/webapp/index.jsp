@@ -6,7 +6,7 @@
     <title>인덱스</title>
 </head>
 <body>
-    <p>11장 예제</p>
+    <p>Menu</p>
     <ul>
     	<li><a href="main">/main으로 이동</a></li>
     	<li><a href="survey">/survey로 이동</a></li>

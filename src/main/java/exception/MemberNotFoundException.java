@@ -1,4 +1,4 @@
-package spring;
+package exception;
 
 public class MemberNotFoundException extends RuntimeException {
 

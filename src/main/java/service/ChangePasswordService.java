@@ -1,6 +1,10 @@
-package spring;
+package service;
 
 import org.springframework.transaction.annotation.Transactional;
+
+import vo.Member;
+import dao.MemberDao;
+import exception.MemberNotFoundException;
 
 public class ChangePasswordService {
 
